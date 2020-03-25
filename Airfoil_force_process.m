@@ -21,19 +21,20 @@ current_folder = pwd;
 
 
 % Microflaps runs --------------------------
-% data_folder = strcat(current_folder,'\microflaps');
+% data_folder = '..\microflaps';
 % output_folder = 'C:\Users\seanp\Documents\Box Sync\Everything\Documents\Research\Fall 2019 - Spring 2020\Data\post-processing\microflaps - no trip';
 % theta = 151.6; %angle (deg) CCW offset mini45 x to airfoil
 
 % Control runs -----------------------------
-% data_folder = strcat(current_folder,'\control_mini45\11_18_19'); %control no trip
-% data_folder = strcat(current_folder,'\control_mini45\1_21_20'); %control no trip
-% output_folder = 'C:\Users\seanp\Documents\Box Sync\Everything\Documents\Research\Fall 2019 - Spring 2020\Data\post-processing\control - no trip';
-% theta = 81.5;
+% data_folder = '..\control_mini45\11_18_19'; %control no trip
+data_folder = '..\control_mini45\1_21_20'; %control no trip
+output_folder = 'C:\Users\seanp\Documents\Box Sync\Everything\Documents\Research\Fall 2019 - Spring 2020\Data\post-processing\control - no trip';
+theta = 81.5;
 
-data_folder = strcat(current_folder,'\control_mini45\1_25_20'); %control with trip
-output_folder = 'C:\Users\seanp\Documents\Box Sync\Everything\Documents\Research\Fall 2019 - Spring 2020\Data\post-processing\control - trip';
-theta = 81.5; %angle (deg) CCW offset mini45 x to airfoil
+% % % data_folder = strcat(current_folder,'\control_mini45\1_25_20'); %control with trip
+% data_folder = '..\control_mini45\1_25_20'; %control with trip
+% output_folder = 'C:\Users\seanp\Documents\Box Sync\Everything\Documents\Research\Fall 2019 - Spring 2020\Data\post-processing\control - trip';
+% theta = 81.5; %angle (deg) CCW offset mini45 x to airfoil
 %% loop to do everything with each run
 data_files = dir(fullfile(data_folder, '*.dat'));   %get list of each file in folder
 % data_raw(:,:,1) = readmatrix(fullfile(data_folder,data_files(1).name),'OutputType','double');

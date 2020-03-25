@@ -44,22 +44,22 @@ data_folder = 'C:\Users\seanp\Documents\Box Sync\Everything\Documents\Research\F
 subfolders_name = GetSubDirsFirstLevelOnly(data_folder);
 [~,num_subfolders] = size(subfolders_name);
 %% define what data to read
-% biasCorr = 0; %   1 = apply
-tunnelCorr = 0; % 0 = don't
+biasCorr = 0; %   1 = apply
+tunnelCorr = 1; % 0 = don't
 %% loop through different corrections
-for biasCorr = [1,0]
+% for biasCorr = [1,0]
 % for tunnelCorr = [1,0]
 if biasCorr == 0 %logic for selecting from which sheet to read
     if tunnelCorr == 0
-        sheet_label = "no corrections";
+        sheet_label = "no corrections"
     else
-        sheet_label = "tunnelCorr only";
+        sheet_label = "tunnelCorr only"
     end
 else % biasCorr == 1
     if tunnelCorr == 0
-        sheet_label = "biasCorr only";
+        sheet_label = "biasCorr only"
     else
-        sheet_label = "biasCorr & tunnelCorr";
+        sheet_label = "biasCorr & tunnelCorr"
     end
 end
 %% cycle through each subfolder
@@ -76,7 +76,7 @@ for n = 1:num_subfolders
         continue
     end
     for k = 2:length(data_files)    %read each file into a data matrix
-        data_current = readmatrix(fullfile(data_folder,subfolders_name{n},data_files(k).name),'OutputType','double');
+        data_current = readmatrix(fullfile(data_folder,subfolders_name{n},data_files(k).name),'Sheet',sheet_label,'OutputType','double');
         if size(data_current)==size(data(:,:,k-1))  %make sure the files are all the same size. Eventually the fix for this could be automated.
             data(:,:,k) = data_current;
         else
@@ -182,6 +182,7 @@ for n = 1:num_subfolders
         %         axis = gca;
         n_new=n;
         h=1;
+        p_start=1;
         while (h <= n_new) %remove empty graphics parts of p variable to allow legend call to go through
             if ~isgraphics(p(h))
                 p(h) = [];
@@ -197,7 +198,7 @@ for n = 1:num_subfolders
         %     ax = axes('Parent',fig);
     end
 end
-end
+% end
 function [subDirsNames] = GetSubDirsFirstLevelOnly(parentDir)
 % Get a list of all files and folders in this folder.
 %taken from matlab forums
