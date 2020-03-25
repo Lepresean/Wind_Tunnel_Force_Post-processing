@@ -7,6 +7,9 @@
 %files must not have .xls file extensions. Tab delimited .dat works well.
 %reference data files are good to have as well, should be in .xlsx with columns: aoa, cx
 %Units are assumed to be SI
+
+%add in functionality to convert .xls to .dat within this code? or just change how file import works
+
 clear; clc;
 %% Initialization
 chord = 8*2.54/100; %airfoil chord in meters
